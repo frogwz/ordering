@@ -1,0 +1,25 @@
+{
+  "name": "ordering",
+  "version": "1.0.0",
+  "description": "订餐",
+  "main": "app.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dangyanglim/ordering.git"
+  },
+  "keywords": [
+    "订餐"
+  ],
+  "author": "cyl",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dangyanglim/ordering/issues"
+  },
+  "homepage": "https://github.com/dangyanglim/ordering#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}

@@ -16,11 +16,12 @@
 
 		<!-- Custom styles for this template -->
 		<link href="starter-template.css" rel="stylesheet">
-
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 		<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
 		<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 		<script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-
+		<script src="order.js"></script>
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
 		<script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -43,8 +44,8 @@
 				</div>
 				<div id="navbar" class="collapse navbar-collapse">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="index.html">预定</a></li>
-						<li><a href="search.html">查询</a></li>
+						<li ><a href="index.html">预定</a></li>
+						<li class="active"><a href="search.html">查询</a></li>
 						<li><a href="admin.html">管理员</a></li>
 					</ul>
 				</div><!--/.nav-collapse -->
@@ -54,8 +55,43 @@
 		<div class="container">
 
 			<div class="starter-template">
-				<h1>Bootstrap starter template</h1>
-				<p class="lead">searcharch Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+				<h1>能迪科技订餐系统</h1>
+				<form role="form" class="form-inline">
+					<div class="ks">
+						<div class="form-group ">
+							<label for="name">部门</label>
+							<select class="form-control " id="depart" name="depart">
+								<option>请选择部门</option>
+								<option>生产</option>
+								<option>运维</option>
+								<option>财务</option>
+							</select>
+						</div>
+						<div class="form-group ">
+
+							<label for="name">姓名</label>
+							<select class="form-control name" name="people">
+								<option>请选择姓名</option>
+							</select>
+						</div>
+						<div class="form-group search">
+							<button type="submit" class="btn btn-default btn-lg btn-block" >查询</button>					
+						</div>
+					</div>
+					<!--/form-->
+					<table class="table table-striped table-bordered table-hover table-condensed">
+						<thead>
+							<tr>
+								<th>日期</th>
+								<th>星期</th>
+								<th>午餐</th>
+								<th>晚餐</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+				</form>
 			</div>
 
 		</div><!-- /.container -->

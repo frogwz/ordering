@@ -1,10 +1,19 @@
 $(document).ready(function(){
 	$("#depart").change(function(){
+		var people=[
+			["请选择姓名"],
+			["张三","李四"],
+			["孙悟空","唐僧"],
+			["陈一","小明"]
+		];
 		$("#depart option").each(function(i){
 			$(this).click(function(){
-
-				$(".name").hide();
-				$(".name").eq(i).show();
+				var dPeople=people[i];
+				$(".name").empty();
+				for(var j=0;j<dPeople.length;j++){
+					var PeopleHtml="<option>"+dPeople[j]+"</option>";
+					$(".name").append(PeopleHtml);
+				}
 
 			});
 		});
@@ -34,6 +43,12 @@ $(document).ready(function(){
 		$("tr").children().eq(i*4).html(text);
 		var week=new Date(text).getDay();
 		$("tr").children().eq(i*4+1).html(weekDay[week]);
+		if(week==0){
+			$("tr").children().eq(i*4+0).css("background-color","#bbb");
+			$("tr").children().eq(i*4+1).css("background-color","#bbb");
+			$("tr").children().eq(i*4+2).css("background-color","#bbb");
+			$("tr").children().eq(i*4+3).css("background-color","#bbb");
+		}
 		var input="<input type='checkbox' name='lunch' value='"+ddate+"'>";
 		$("tr").children().eq(i*4+2).html(input);
 		input="<input type='checkbox' name='dinner' value='"+ddate+"'>";
@@ -41,9 +56,15 @@ $(document).ready(function(){
 
 		//alert(t);
 		}
-		alert(input);
 
 	});
+	$("#order").click(function() {
+		  alert($('form').serialize());
+		    return false;
+	});
+//	$("#order").click(function(){
+//		alert("ok");
+//	});
 
 
 })
