@@ -1,0 +1,30 @@
+body {
+	  padding-top: 50px;
+	  padding-bottom:50px;
+  }
+  .starter-template>h1 {
+	      text-align: center;
+	      padding-bottom:40px;
+      }
+  .ks {
+	  padding-bottom:20px;
+  }
+  .starter-template>form>table{
+	  padding-bottom:40px;
+	  padding-top:40px
+  }
+  .starter-template>form>table>thead{
+	  background-color:#888;
+  }
+  .search{
+	float:right;
+  }
+  .order{
+	float:right;
+  }
+  .search>button,
+  .order>button{
+  	background-color:#ccc;
+	border-width:4px;
+	width:200px;
+  }
