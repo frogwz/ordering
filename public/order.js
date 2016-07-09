@@ -70,6 +70,18 @@ $(document).ready(function(){
 		});
 		return false;
 	});
+	$("#search").click(function() {
+		$.ajax({
+			type: 'post',
+			url: 'http://139.129.34.99:3000/search',
+			data: $("form").serialize(),
+			//async:false,
+			success: function(data) {
+				// your code
+			}
+		});
+		return false;
+	});
 	//	$("#order").click(function(){
 	//		alert("ok");
 	//	});
