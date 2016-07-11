@@ -27,6 +27,8 @@ app.post('/order', function (req, res) {
 				//	collection.save(req.body);
 					//collection.update({depart:req.body.depart,people:req.body.people},{$set:{lunch:req.body.lunch}},true);
 					collection.update({depart:req.body.depart,people:req.body.people},req.body,true);
+					res.send("ok");
+					res.end();
 
 				//	collection.find({depart:req.body.depart,people:req.body.people}).toArray(function(err,docs){
 				//		console.log('find');
@@ -36,7 +38,7 @@ app.post('/order', function (req, res) {
 
 		}
 	});
-	res.end();
+	//res.end("ok");
 });
 
 app.post('/search', function (req, res) {
@@ -58,15 +60,17 @@ app.post('/search', function (req, res) {
 						console.log('find');
 						//var rjson=JSON.parse(docs);
 						//console.log(rjson.depart);
-						console.log(docs[0].depart);
 						console.log(docs);
-					});
+						console.log(docs[0].lunch);
+						return res.send(docs[0]);
+						res.end();
+						});
 				}
 			});
 
 		}
 			});
-	res.end();
+	//res.end();
 });
 var server = app.listen(3000, function () {
 	var host = server.address().address;
