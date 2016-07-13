@@ -12,7 +12,8 @@
 		<title>内部订餐系统</title>
 
 		<!-- Bootstrap core CSS -->
-		<link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+		<!--link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"-->
+		<link href="./public/bootstrap.min.css" rel="stylesheet">
 
 		<!-- Custom styles for this template -->
 		<link href="./public/starter-template.css" rel="stylesheet">
@@ -65,19 +66,26 @@
 								<option>生产</option>
 								<option>运维</option>
 								<option>财务</option>
+								<option>营销</option>
+								<option>行政</option>
 							</select>
 						</div>
 						<div class="form-group ">
 
-							<label for="name">姓名</label>
+							<label for="name">&nbsp;&nbsp;姓名</label>
 							<select class="form-control name" name="people" id="people">
 								<option>请选择姓名</option>
 							</select>
 						</div>
+						<div class="form-group">
+							<!--label for="name" id="date">日期</label-->
+							<p  id="date"></p>
+						</div>
 						<div class="form-group order">
-					<button type="submit" class="btn btn-default btn-lg " id="order">提交</button>					
+							<button type="submit" class="btn btn-default btn-lg " id="order">提交</button>					
 						</div>
 					</div>
+					<!--/div-->
 					<!--/form-->
 					<table class="table table-striped table-bordered table-hover table-condensed" id="ordertable">
 						<thead>
@@ -270,10 +278,10 @@
 								<td>Anna</td>
 							</tr>
 							<tr>
-								<td>3</td>
-								<td>John</td>
-								<td>Anna</td>
-								<td>Anna</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
 							</tr>
 						</tbody>
 					</table>
@@ -287,10 +295,10 @@
 		<!-- Bootstrap core JavaScript
 		================================================== -->
 		<!-- Placed at the end of the document so the pages load faster -->
-		<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
-		<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<!--script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script-->
+		<!--script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script-->
 		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-		<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+		<!--script src="../../assets/js/ie10-viewport-bug-workaround.js"></script-->
 	</body>
 </html>
 

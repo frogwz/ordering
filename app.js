@@ -19,63 +19,199 @@ app.post('/order', function (req, res) {
 			//db.collection('order',{safe:true}, function(err, collection){
 			db.createCollection('order',{safe:true}, function(err, collection){
 				if(!err){
-				/**
+					/**
 					collection.insert(req.body,function(err, result){
 						console.log(result);
 					});
 					*****/
-				//	collection.save(req.body);
+					//	collection.save(req.body);
 					//collection.update({depart:req.body.depart,people:req.body.people},{$set:{lunch:req.body.lunch}},true);
-					collection.update({depart:req.body.depart,people:req.body.people},req.body,true);
-					res.send("ok");
-					res.end();
+					collection.update({depart:req.body.depart,people:req.body.people,year:req.body.year,month:req.body.month},req.body,function(err,result){
 
-				//	collection.find({depart:req.body.depart,people:req.body.people}).toArray(function(err,docs){
-				//		console.log('find');
-				//	}); 
-				}
-			});
+						if(result.result.nModified){
+							return res.send("预定成功,可到查询页查看结果");
+							res.end();
 
-		}
-	});
-	//res.end("ok");
-});
 
-app.post('/search', function (req, res) {
-	
-	console.log(req.body);
-	db.open(function(err,db){
-		if(!err){
-			console.log('connect db order');
-			db.collection('order',{safe:true}, function(err, collection){
-				if(!err){
-					/**
-					collection.find({depart:req.body.depart,people:req.body.people},function(err,data){
-						console.log(data.depart);	
-					
+						}
+						else{
+
+							collection.save(req.body);
+							return res.send("预定成功,可到查询页查看结果");
+							res.end();
+						}
+
+
+
 					});
-				**/
-					//console.log(result);
-						collection.find({depart:req.body.depart,people:req.body.people}).toArray(function(err,docs){
-						console.log('find');
-						//var rjson=JSON.parse(docs);
-						//console.log(rjson.depart);
-						console.log(docs);
-						console.log(docs[0].lunch);
-						return res.send(docs[0]);
-						res.end();
-						});
+
+					//	collection.find({depart:req.body.depart,people:req.body.people}).toArray(function(err,docs){
+					//		console.log('find');
+					//	}); 
 				}
 			});
 
-		}
-			});
-	//res.end();
-});
-var server = app.listen(3000, function () {
-	var host = server.address().address;
-	var port = server.address().port;
+			}
+		});
+		//res.end("ok");
+	});
+	function getMyDate(f){
+		db.open(function(err,db){
+			if(!err){
+				db.collection('date',{safe:true}, function(err, collection){
+					if(!err){
+						collection.find().toArray(function(err,docs){
+							console.log(docs);
+							console.log("ok");
+							f(docs);	
+						});
+					}
+				});
+			}
+		});
 
-	console.log('Example app listening at http://%s:%s', host, port);
-});
+		//return null;
+
+
+	}
+	app.get('/date', function (req, res) {
+
+		console.log(req.body);
+		db.open(function(err,db){
+			if(!err){
+				console.log('connect db date');
+				db.collection('date',{safe:true}, function(err, collection){
+					if(!err){
+						collection.find().toArray(function(err,docs){
+							//console.log(docs);
+							return res.send(docs);
+							res.end();
+						});
+					}
+				});
+			}
+		});
+	});
+	app.post('/date', function (req, res) {
+
+		console.log(req.body);
+		db.open(function(err,db){
+			if(!err){
+				console.log('connect db date');
+				db.collection('date',{safe:true}, function(err, collection){
+					if(!err){
+						collection.update({},req.body)
+							return res.send("设定成功");
+							res.end();
+					}
+				});
+			}
+		});
+	});
+	app.post('/addPeople', function (req, res) {
+
+		console.log(req.body);
+		db.open(function(err,db){
+			if(!err){
+				console.log('connect db date');
+				db.createCollection('people',{safe:true}, function(err, collection){
+					if(!err){
+					collection.update({depart:req.body.depart,people:req.body.people,year:req.body.year,month:req.body.month},req.body,function(err,result){
+
+						if(result.result.nModified){
+
+							return res.send("添加成功");
+							res.end();
+
+						}
+						else{
+
+							collection.save(req.body);
+							return res.send("添加成功");
+							res.end();
+						}
+
+
+
+					});
+					}
+				});
+			}
+		});
+	});
+	app.post('/delPeople', function (req, res) {
+
+		console.log(req.body);
+		db.open(function(err,db){
+			if(!err){
+				console.log('connect db date');
+				db.collection('people',{safe:true}, function(err, collection){
+					if(!err){
+							collection.remove(req.body);
+							return res.send("删除成功");
+							res.end();
+					}
+				});
+			}
+		});
+	});
+
+	app.post('/select', function (req, res) {
+		getMyDate(function(val){
+			console.log(val[0]);
+			//console.log(val[0].year);
+			console.log(req.body);
+			db.open(function(err,db){
+				if(!err){
+					console.log('connect db order');
+					db.collection('people',{safe:true}, function(err, collection){
+					//db.collection('order',{safe:true}, function(err, collection){
+						if(!err){
+							collection.find({depart:req.body.depart}).toArray(function(err,docs){
+								console.log(docs);
+								return res.send(docs);
+								res.end();
+							});
+						}
+					});
+				}
+			});
+
+		});
+	});
+	app.post('/search', function (req, res) {
+		getMyDate(function(val){
+			console.log(val[0]);
+
+		console.log(req.body);
+		db.open(function(err,db){
+			if(!err){
+				console.log('connect db order');
+				db.collection('order',{safe:true}, function(err, collection){
+					if(!err){
+						/**
+						collection.find({depart:req.body.depart,people:req.body.people},function(err,data){
+							console.log(data.depart);	
+
+						});
+						**/
+						//console.log(result);
+						collection.find({depart:req.body.depart,people:req.body.people,year:val[0].year,month:val[0].month}).toArray(function(err,docs){
+							console.log('find');
+							return res.send(docs[0]);
+							res.end();
+						});
+					}
+				});
+
+			}
+		});
+		});
+	});
+	var server = app.listen(3000, function () {
+		var host = server.address().address;
+		var port = server.address().port;
+
+		console.log('Example app listening at http://%s:%s', host, port);
+	});
 

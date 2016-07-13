@@ -5,6 +5,7 @@ body {
   .starter-template>h1 {
 	      text-align: center;
 	      padding-bottom:40px;
+	      padding-top:40px;
       }
   .ks {
 	  padding-bottom:20px;
