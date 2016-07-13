@@ -61,24 +61,23 @@ $(document).ready(function(){
 			},
 		});
 		$("#depart option").each(function(i){
-			$(this).click(function(){
+			//alert("ok");
+		//	$(this).click(function(){
+			if($(this).is(":selected")){
+			//alert("ok2");
 				var dPeople=people[i];
 				$(".name").empty();
 				for(var j=0;j<dPeople.length;j++){
+			//alert("ok3");
 					var PeopleHtml="<option>"+dPeople[j]+"</option>";
 					$(".name").append(PeopleHtml);
 				}
 
-			});
+		//	});
+		}
 		});
 	});
 	$(function(){
-		//	var today = new Date();
-		//	var weekDay = ["星期天", "星期一", "星期二", "星期三", "星期四", "星期五","星期六"];
-		//	var text=today.getMonth();
-		//	var year=today.getFullYear();
-		//	var Month=parseInt(text)+1;
-		//	var days=30;
 		if(Month==2){
 			days=year%4==0?29:28;
 
