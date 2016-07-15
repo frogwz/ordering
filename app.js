@@ -179,6 +179,24 @@ app.post('/order', function (req, res) {
 
 		});
 	});
+	app.post('/searchPeople', function (req, res) {
+			console.log(req.body);
+			db.open(function(err,db){
+				if(!err){
+					console.log('connect db people');
+					db.collection('people',{safe:true}, function(err, collection){
+						if(!err){
+							collection.find().toArray(function(err,docs){
+								console.log(docs);
+								return res.send(docs);
+								res.end();
+							});
+						}
+					});
+				}
+			});
+
+	});
 	app.post('/search', function (req, res) {
 		getMyDate(function(val){
 			console.log(val[0]);
@@ -208,6 +226,32 @@ app.post('/order', function (req, res) {
 		});
 		});
 	});
+	app.post('/tj', function (req, res) {
+
+		console.log(req.body);
+		db.open(function(err,db){
+			if(!err){
+				console.log('connect db order');
+				db.collection('order',{safe:true}, function(err, collection){
+					if(!err){
+						/**
+						collection.find({depart:req.body.depart,people:req.body.people},function(err,data){
+							console.log(data.depart);	
+
+						});
+						**/
+						//console.log(result);
+						collection.find({year:req.body.year,month:req.body.month}).toArray(function(err,docs){
+							console.log('find');
+							return res.send(docs);
+							res.end();
+						});
+					}
+				});
+
+			}
+		});
+		});
 	var server = app.listen(3000, function () {
 		var host = server.address().address;
 		var port = server.address().port;

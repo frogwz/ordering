@@ -7,8 +7,13 @@ body {
 	      padding-bottom:40px;
 	      padding-top:40px;
       }
+  .tjb>h2 {
+	      text-align: center;
+  	margin-top:30px;	
+      }
   .ks {
 	  padding-bottom:20px;
+	  margin-bottom:10px;
   }
   .starter-template>form>table{
 	  padding-bottom:40px;
@@ -29,3 +34,18 @@ body {
 	border-width:4px;
 	width:200px;
   }
+  #addpeople {
+  	margin-right:20px;	
+  	margin-bottom:5px;	
+  }
+  #delpeople {
+  	margin-bottom:5px;	
+  }
+  #tj {
+  	margin-top:50px;	
+  }
+  #tabletj1,
+ #tabletj2 {
+  	margin-top:30px;	
+  }
+
