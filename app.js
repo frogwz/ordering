@@ -42,10 +42,10 @@ app.get('/session', function (req, res) {
 });
 app.get('/admin', function (req, res) {
 	if(req.session.username=="陈阳林"){
-		res.redirect("/admin.html");
+		res.redirect("./admin.html");
 	}
 	else{
-		res.redirect("/login.html");
+		res.redirect("./login.html");
 
 	}
 });
