@@ -295,6 +295,7 @@ $(document).ready(function(){
 			dataType:'text',
 			success:function(data) {
 				alert(data);
+
 			}
 		});
 
@@ -336,9 +337,6 @@ $(document).ready(function(){
 	});
 	function sortDepart(a,b){
 		return a.depart>b.depart;
-		//	return a.people-b.people;
-		//return a.localeCompare(b);
-		//	return a.depart.localeCompare(b.a);
 	}
 	$("#tj").click(function(){
 		//alert("ok");
@@ -488,3 +486,4 @@ $(document).ready(function(){
 
 
 })
+
