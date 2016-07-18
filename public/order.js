@@ -267,7 +267,8 @@ $(document).ready(function(){
 					// your code
 				},
 				error: function(XMLHttpRequest, textStatus, errorThrown) {
-					alert(textStatus);
+					//alert(textStatus);
+					alert("没有预定数据:"+textStatus);
 				},
 
 			});

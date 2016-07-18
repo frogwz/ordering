@@ -46,7 +46,9 @@ body {
   }
   #tabletj1,
  #tabletj2 {
-  	margin-top:30px;	
+  	margin-top:30px;
+	border-width:2px;
+	border-color:black;	
   }
 
   .logindiv {
